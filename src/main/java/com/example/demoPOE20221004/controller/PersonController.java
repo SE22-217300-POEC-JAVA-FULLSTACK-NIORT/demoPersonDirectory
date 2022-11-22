@@ -18,5 +18,10 @@ public class PersonController {
 		persons.add( new Person("Marie", "Dupont"));
 		return persons;
 	}
+	
+	@GetMapping("person")
+	public Person getPerson(){
+		return new Person("Alain", "Delon");
+	}
 
 }
