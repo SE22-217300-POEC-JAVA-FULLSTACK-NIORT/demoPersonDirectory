@@ -6,18 +6,21 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demoPOE20221004.model.Person;
 
 @RestController
+@RequestMapping("api")
 public class PersonController {
+	
+	private List<Person> persons = new ArrayList<>();
 	
 	@GetMapping("persons")
 	public List<Person> getPersons(){
-		List<Person> persons = new ArrayList<>();
-		persons.add( new Person("Alain", "Delon"));
-		persons.add( new Person("Marie", "Dupont"));
+		
 		return persons;
 	}
 	
@@ -27,9 +30,9 @@ public class PersonController {
 	}
 	
 	@PostMapping("persons")
-	public void postPersonne(@RequestBody Person newPerson) {
-		System.out.println(newPerson);
-		
+	public Person postPerson(@RequestBody Person newPerson) {
+		persons.add(newPerson);		
+		return newPerson;
 	}
 
 }
