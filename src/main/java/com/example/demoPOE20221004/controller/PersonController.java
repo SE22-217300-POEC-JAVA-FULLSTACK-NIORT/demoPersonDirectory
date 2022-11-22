@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demoPOE20221004.model.Person;
@@ -22,6 +24,12 @@ public class PersonController {
 	@GetMapping("person")
 	public Person getPerson(){
 		return new Person("Alain", "Delon");
+	}
+	
+	@PostMapping("persons")
+	public void postPersonne(@RequestBody Person newPerson) {
+		System.out.println(newPerson);
+		
 	}
 
 }
