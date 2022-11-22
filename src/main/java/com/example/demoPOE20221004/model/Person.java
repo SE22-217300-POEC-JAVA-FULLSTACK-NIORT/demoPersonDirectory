@@ -2,6 +2,7 @@ package com.example.demoPOE20221004.model;
 
 public class Person {
 	
+	private Long id;
 	private String firstName;
 	private String lastName;
 	
@@ -27,10 +28,21 @@ public class Person {
 		this.lastName = lastName;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
-		return "Person [firstName=" + firstName + ", lastName=" + lastName + "]";
+		return "Person [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
+	
+	
+
 	
 	
 
