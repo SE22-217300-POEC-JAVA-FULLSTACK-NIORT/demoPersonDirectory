@@ -39,4 +39,12 @@ public class PersonController {
 		personDirectory.deletePerson(id);
 	}
 
+	@PutMapping("persons/{id}")
+	public void updatePerson(@RequestBody Person person, @PathVariable("id") Long id){
+
+		personDirectory.updatePerson(person, id);
+
+
+	}
+
 }

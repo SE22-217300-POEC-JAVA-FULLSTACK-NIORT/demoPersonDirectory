@@ -36,14 +36,23 @@ public class PersonDirectory {
 
 	public void deletePerson(Long id){
 		Iterator<Person> it = persons.listIterator();
-
-
 		while (it.hasNext()){
 			Person person = it.next();
 			if(person.getId().equals(id)){
 				it.remove();
 			}
 		}
+	}
+
+	public void updatePerson(Person personToUpdate, Long id){
+		Iterator<Person> it = persons.listIterator();
+		while (it.hasNext()){
+			Person person = it.next();
+			if(person.getId().equals(id)){
+				it.remove();
+			}
+		}
+		persons.add(personToUpdate);
 	}
 
 }
