@@ -34,4 +34,9 @@ public class PersonController {
 		return newPerson;
 	}
 
+	@DeleteMapping("persons/{id}")
+	public void deletePerson(@PathVariable("id") Long id){
+		personDirectory.deletePerson(id);
+	}
+
 }
