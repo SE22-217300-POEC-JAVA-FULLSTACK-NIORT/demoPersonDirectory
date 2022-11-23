@@ -24,9 +24,14 @@ public class PersonController {
 	}
 
 	@GetMapping("persons/{id}")
-	public Person getPerson(@PathVariable("id") Long id){
-
-		return personDirectory.getPerson(id);
+	public ResponseEntity<Person> getPerson(@PathVariable("id") Long id){
+		Person person = personDirectory.getPerson(id);
+		if(person == null){
+			return ResponseEntity.notFound().build();
+		}
+		else{
+			return ResponseEntity.ok(person);
+		}
 	}
 	
 	@PostMapping("persons")
