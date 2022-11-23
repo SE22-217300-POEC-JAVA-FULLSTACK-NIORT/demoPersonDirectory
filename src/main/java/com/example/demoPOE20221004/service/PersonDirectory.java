@@ -55,4 +55,13 @@ public class PersonDirectory {
 		persons.add(personToUpdate);
 	}
 
+	public void updatePerson2(Person personToUpdate, Long id){
+		for(int i=0 ; i< persons.size() ; i++){
+			Person person = persons.get(i);
+			if(person.getId().equals(id)){
+				persons.set(i, personToUpdate);
+			}
+		}
+	}
+
 }

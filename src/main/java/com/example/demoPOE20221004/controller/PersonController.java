@@ -42,8 +42,9 @@ public class PersonController {
 	@PutMapping("persons/{id}")
 	public void updatePerson(@RequestBody Person person, @PathVariable("id") Long id){
 
-		personDirectory.updatePerson(person, id);
 
+		//personDirectory.updatePerson(person, id);
+		personDirectory.updatePerson2(person, id);
 
 	}
 
