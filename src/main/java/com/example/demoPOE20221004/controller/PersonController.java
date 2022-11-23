@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demoPOE20221004.model.Person;
@@ -40,11 +41,18 @@ public class PersonController {
 	}
 
 	@PutMapping("persons/{id}")
-	public void updatePerson(@RequestBody Person person, @PathVariable("id") Long id){
+	public ResponseEntity updatePerson(@RequestBody Person person, @PathVariable("id") Long id){
 
+		if(id != person.getId()){
+			return ResponseEntity.badRequest().build();
+		}
+		else {
 
-		//personDirectory.updatePerson(person, id);
-		personDirectory.updatePerson2(person, id);
+			//personDirectory.updatePerson(person, id);
+			personDirectory.updatePerson2(person, id);
+			return ResponseEntity.ok().build();
+
+		}
 
 	}
 
