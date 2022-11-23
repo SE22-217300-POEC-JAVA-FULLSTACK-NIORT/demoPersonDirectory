@@ -24,4 +24,13 @@ public class PersonDirectory {
 		return persons;
 	}
 
+	public Person getPerson(Long id) {
+		for(Person person : persons){
+			if(person.getId().equals(id)){
+				return person;
+			}
+		}
+		return null; // à améliorer avec l'utilisation d'un Optional
+	}
+
 }

@@ -4,12 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demoPOE20221004.model.Person;
 import com.example.demoPOE20221004.service.PersonDirectory;
@@ -26,11 +21,12 @@ public class PersonController {
 		
 		return personDirectory.getPersons();
 	}
-	
-//	@GetMapping("person")
-//	public Person getPerson(){
-//		return new Person("Alain", "Delon");
-//	}
+
+	@GetMapping("persons/{id}")
+	public Person getPerson(@PathVariable("id") Long id){
+
+		return personDirectory.getPerson(id);
+	}
 	
 	@PostMapping("persons")
 	public Person postPerson(@RequestBody Person newPerson) {
