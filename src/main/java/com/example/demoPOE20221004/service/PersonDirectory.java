@@ -3,6 +3,7 @@ package com.example.demoPOE20221004.service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -25,13 +26,13 @@ public class PersonDirectory {
 		return persons;
 	}
 
-	public Person getPerson(Long id) {
+	public Optional<Person> getPerson(Long id) {
 		for(Person person : persons){
 			if(person.getId().equals(id)){
-				return person;
+				return Optional.of(person);
 			}
 		}
-		return null; // à améliorer avec l'utilisation d'un Optional
+		return Optional.empty();
 	}
 
 	public void deletePerson(Long id){

@@ -2,6 +2,7 @@ package com.example.demoPOE20221004.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,12 +26,12 @@ public class PersonController {
 
 	@GetMapping("persons/{id}")
 	public ResponseEntity<Person> getPerson(@PathVariable("id") Long id){
-		Person person = personDirectory.getPerson(id);
-		if(person == null){
+		Optional<Person> optionalPerson = personDirectory.getPerson(id);
+		if(optionalPerson.isEmpty()){
 			return ResponseEntity.notFound().build();
 		}
 		else{
-			return ResponseEntity.ok(person);
+			return ResponseEntity.ok(optionalPerson.get());
 		}
 	}
 	
