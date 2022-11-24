@@ -29,7 +29,7 @@ public class PersonDirectory {
 	}
 	
 	public List<Person> getPersons(){
-		return persons;
+		return personRepository.findAll();
 	}
 
 	public Optional<Person> getPerson(Long id) {
