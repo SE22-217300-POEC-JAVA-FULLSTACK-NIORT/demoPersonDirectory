@@ -1,17 +1,18 @@
 package com.example.demoPOE20221004.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="persons")
 public class Person {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	//@Column(name = "prenom")
 	private String firstName;
+	//@Column(name = "nom")
 	private String lastName;
 	
 	

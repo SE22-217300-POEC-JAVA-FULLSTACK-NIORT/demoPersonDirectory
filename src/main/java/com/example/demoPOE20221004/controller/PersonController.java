@@ -54,8 +54,7 @@ public class PersonController {
 		}
 		else {
 
-			//personDirectory.updatePerson(person, id);
-			personDirectory.updatePerson2(person, id);
+			personDirectory.updatePerson(person, id);
 			return ResponseEntity.ok().build();
 		}
 	}

@@ -16,14 +16,8 @@ public class PersonDirectory {
 
 	@Autowired
 	private PersonRepository personRepository;
-	private List<Person> persons = new ArrayList<>();
-	private Long nextId = 0L;
 	
 	public void addPerson(Person newPerson) {
-		
-//		nextId++;
-//		newPerson.setId(nextId);
-//		persons.add(newPerson);
 
 		personRepository.save(newPerson);
 	}
@@ -33,50 +27,23 @@ public class PersonDirectory {
 	}
 
 	public Optional<Person> getPerson(Long id) {
-		for(Person person : persons){
-			if(person.getId().equals(id)){
-				return Optional.of(person);
-			}
-		}
-		return Optional.empty();
+		return personRepository.findById(id);
 	}
 
 	public void deletePerson(Long id){
-		Iterator<Person> it = persons.listIterator();
-		while (it.hasNext()){
-			Person person = it.next();
-			if(person.getId().equals(id)){
-				it.remove();
-			}
-		}
+		personRepository.deleteById(id);
 	}
 
 	public void updatePerson(Person personToUpdate, Long id){
-		Iterator<Person> it = persons.listIterator();
-		while (it.hasNext()){
-			Person person = it.next();
-			if(person.getId().equals(id)){
-				it.remove();
-			}
-		}
-		persons.add(personToUpdate);
-	}
-
-	public void updatePerson2(Person personToUpdate, Long id){
-		for(int i=0 ; i< persons.size() ; i++){
-			Person person = persons.get(i);
-			if(person.getId().equals(id)){
-				persons.set(i, personToUpdate);
-			}
-		}
+		personRepository.save(personToUpdate);
 	}
 
 	public void patchPerson(Person personToUpdate, Long id){
-		for(Person person : persons){
-			if(person.getId().equals(id)){
-				person.patch(personToUpdate);
-				break;
-			}
+		Optional<Person> op = personRepository.findById(id);
+		if(op.isPresent()){
+			Person person = op.get();
+			person.patch(personToUpdate);
+			personRepository.save(person);
 		}
 	}
 }
