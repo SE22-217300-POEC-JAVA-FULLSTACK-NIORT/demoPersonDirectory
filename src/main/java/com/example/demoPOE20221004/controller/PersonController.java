@@ -56,9 +56,12 @@ public class PersonController {
 			//personDirectory.updatePerson(person, id);
 			personDirectory.updatePerson2(person, id);
 			return ResponseEntity.ok().build();
-
 		}
-
 	}
 
+	@PatchMapping("persons/{id}")
+	public void patchPerson(@RequestBody Person person, @PathVariable("id") Long id){
+		System.out.println(person);
+		personDirectory.patchPerson(person, id);
+	}
 }

@@ -64,4 +64,12 @@ public class PersonDirectory {
 		}
 	}
 
+	public void patchPerson(Person personToUpdate, Long id){
+		for(Person person : persons){
+			if(person.getId().equals(id)){
+				person.patch(personToUpdate);
+				break;
+			}
+		}
+	}
 }

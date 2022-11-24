@@ -43,7 +43,14 @@ public class Person {
 	
 	
 
-	
+	public void patch(Person dataToUpdate){
+		if(dataToUpdate.getFirstName() != null)	{
+			this.firstName = dataToUpdate.getFirstName();
+		}
+		if(dataToUpdate.getLastName() != null)	{
+			this.lastName = dataToUpdate.getLastName();
+		}
+	}
 	
 
 }
