@@ -5,21 +5,27 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.demoPOE20221004.dao.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demoPOE20221004.model.Person;
 
 @Service
 public class PersonDirectory {
-	
+
+	@Autowired
+	private PersonRepository personRepository;
 	private List<Person> persons = new ArrayList<>();
 	private Long nextId = 0L;
 	
 	public void addPerson(Person newPerson) {
 		
-		nextId++;
-		newPerson.setId(nextId);
-		persons.add(newPerson);
+//		nextId++;
+//		newPerson.setId(nextId);
+//		persons.add(newPerson);
+
+		personRepository.save(newPerson);
 	}
 	
 	public List<Person> getPersons(){
