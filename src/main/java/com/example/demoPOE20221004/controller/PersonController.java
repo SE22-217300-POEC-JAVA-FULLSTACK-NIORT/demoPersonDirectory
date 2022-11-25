@@ -65,10 +65,17 @@ public class PersonController {
 		personDirectory.patchPerson(person, id);
 	}
 
+	// Query Param
 	//searchbylastname?lastname=Delon
 	@GetMapping("searchbylastname")
 	public List<Person> searchByLastName(@RequestParam("lastname") String lastName){
 		System.out.println(lastName);
 		return personDirectory.searchByLastName(lastName);
+	}
+
+	@GetMapping("searchbylastnamecontains")
+	public List<Person> searchByLastNameContains(@RequestParam("lastname") String lastName){
+		System.out.println(lastName);
+		return personDirectory.searchByLastNameContains(lastName);
 	}
 }

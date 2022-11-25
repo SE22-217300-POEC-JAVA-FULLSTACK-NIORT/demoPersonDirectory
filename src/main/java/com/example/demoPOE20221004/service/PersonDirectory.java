@@ -50,4 +50,8 @@ public class PersonDirectory {
 	public List<Person> searchByLastName(String lastName) {
 		return personRepository.findAllByLastName(lastName);
 	}
+
+	public List<Person> searchByLastNameContains(String partialLastName) {
+		return personRepository.findAllByLastNameContains(partialLastName);
+	}
 }
