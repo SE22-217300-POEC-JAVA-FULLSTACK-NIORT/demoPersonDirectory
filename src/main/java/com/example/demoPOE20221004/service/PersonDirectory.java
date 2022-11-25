@@ -46,4 +46,8 @@ public class PersonDirectory {
 			personRepository.save(person);
 		}
 	}
+
+	public List<Person> searchByLastName(String lastName) {
+		return personRepository.findAllByLastName(lastName);
+	}
 }
