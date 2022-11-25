@@ -37,7 +37,7 @@ class DemoPoe20221004ApplicationTests {
 
 	@Test
 	void testLecturePerson(){
-		Optional<Person> personOptional = personRepository.findById(4L);
+		Optional<Person> personOptional = personRepository.findById(1L);
 		if(personOptional.isPresent()){
 			Person person = personOptional.get();
 			System.out.println(person);
@@ -45,5 +45,22 @@ class DemoPoe20221004ApplicationTests {
 			System.out.println(a);
 		}
 	}
+
+	@Test
+	void testAjoutAdressMarie(){
+		Optional<Person> personOptional = personRepository.findById(1L);
+		if(personOptional.isPresent()){
+			Person marie = personOptional.get();
+
+			Optional<Address> addressOptional = addressRepository.findById(2L);
+			if(addressOptional.isPresent()){
+				Address adresseDeMarie = addressOptional.get();
+
+				marie.setAddress(adresseDeMarie);
+				personRepository.save(marie);
+			}
+		}
+	}
+
 
 }
