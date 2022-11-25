@@ -14,6 +14,9 @@ public class Person {
 	private String firstName;
 	//@Column(name = "nom")
 	private String lastName;
+
+	@ManyToOne
+	private Address address;
 	
 	
 	public Person() {
@@ -34,6 +37,7 @@ public class Person {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
+
 		this.lastName = lastName;
 	}
 
@@ -43,6 +47,14 @@ public class Person {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override
@@ -60,6 +72,6 @@ public class Person {
 			this.lastName = dataToUpdate.getLastName();
 		}
 	}
-	
+
 
 }
