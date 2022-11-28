@@ -1,9 +1,11 @@
 package com.example.demoPOE20221004;
 
 import com.example.demoPOE20221004.dao.AddressRepository;
+import com.example.demoPOE20221004.dao.ChienRepository;
 import com.example.demoPOE20221004.dao.PersonRepository;
 import com.example.demoPOE20221004.dao.StageRepository;
 import com.example.demoPOE20221004.model.Address;
+import com.example.demoPOE20221004.model.Chien;
 import com.example.demoPOE20221004.model.Person;
 import com.example.demoPOE20221004.model.Stage;
 import org.junit.jupiter.api.Test;
@@ -24,6 +26,9 @@ class DemoPoe20221004ApplicationTests {
 
 	@Autowired
 	StageRepository stageRepository;
+
+	@Autowired
+	ChienRepository chienRepository;
 
 	//@Test
 	void testAddress() {
@@ -106,5 +111,15 @@ class DemoPoe20221004ApplicationTests {
 
 	}
 
+	@Test
+	void testChien(){
+		Person francis = new Person("Francis", "Lalanne");
+		personRepository.save(francis);
 
+		Chien medor = new Chien();
+		medor.setNom("Médor");
+		medor.setAge(4);
+		medor.setProprietaire(francis);
+		chienRepository.save(medor);
+	}
 }
