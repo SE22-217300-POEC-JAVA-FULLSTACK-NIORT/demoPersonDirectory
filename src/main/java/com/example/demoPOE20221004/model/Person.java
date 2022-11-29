@@ -1,5 +1,7 @@
 package com.example.demoPOE20221004.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,7 @@ public class Person {
 	//@Column(name = "prenom")
 	private String firstName;
 	//@Column(name = "nom")
+
 	private String lastName;
 
 	@ManyToOne

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.demoPOE20221004.controller.dto.PersonDTO;
+import com.example.demoPOE20221004.controller.dto.PersonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,13 +27,15 @@ public class PersonController {
 	}
 
 	@GetMapping("persons/{id}")
-	public ResponseEntity<Person> getPerson(@PathVariable("id") Long id){
+	public ResponseEntity<PersonDTO> getPerson(@PathVariable("id") Long id){
 		Optional<Person> optionalPerson = personDirectory.getPerson(id);
 		if(optionalPerson.isEmpty()){
 			return ResponseEntity.notFound().build();
 		}
 		else{
-			return ResponseEntity.ok(optionalPerson.get());
+			Person entity = optionalPerson.get();
+			PersonDTO dto = PersonMapper.convertToDto(entity);
+			return ResponseEntity.ok(dto);
 		}
 	}
 	
